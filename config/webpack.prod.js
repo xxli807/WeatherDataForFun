@@ -12,7 +12,7 @@ module.exports = webpackMerge.smart(commonConfig, {
     filename: '[name]-[hash].js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract(
@@ -26,7 +26,7 @@ module.exports = webpackMerge.smart(commonConfig, {
     extensions: ['', '.js']
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor-[hash].js"),
+    new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor-[hash].js' } ),
     new ExtractTextPlugin('app-[hash].css'),
     new webpack.DefinePlugin({
       'process.env': {

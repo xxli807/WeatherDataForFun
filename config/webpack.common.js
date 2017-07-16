@@ -8,7 +8,13 @@ module.exports = {
     vendor: helpers.root('client', 'app', 'vendor.js')
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include: helpers.root('client'),
+        enforce: "pre",
+        loader: 'eslint-loader'
+      },
       {
         test: /\.s?(c|a)ss$/,
         include: helpers.root('client'),
@@ -23,13 +29,6 @@ module.exports = {
         loaders: [
           'babel-loader'
         ]
-      }
-    ],
-    preLoaders: [
-      {
-        test: /\.(js|jsx)$/,
-        include: helpers.root('client'),
-        loader: 'eslint-loader'
       }
     ]
   },
