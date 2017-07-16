@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Home/index.js")"></script>
+
+  
+<div id="weatherSearchContainer"> 
+    <div class="row searchToolbar">
+        <div class="col-md-4">
+            <input type="text" placeholder="Country Name" class="countryName" data-bind="value: countryName" />
+        </div>
+        <div class="col-md-6">
+            <select class="cityName" data-bind="options: availableCities, value: selectedCity, optionsCaption: 'Select...'"></select>
+        </div>
+        <div class="col-md-2">
+            <span data-bind="text: errorMessage" class="errorMessage"></span>
+        </div>
+    </div>
+     
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Weather Detail</div>
+
+                <ul class="list-group" data-bind="with: WeatherDetail">
+                    <li class="list-group-item"><b>Location:</b> <span data-bind="text: location"></span></li>
+                    <li class="list-group-item"><b>Time:</b> <span data-bind="text: time"></span></li>
+                    <li class="list-group-item"><b>Wind: </b><span data-bind="text: wind"></span></li>
+                    <li class="list-group-item"><b>Visibility:</b> <span data-bind="text: visibility"></span></li>
+                    <li class="list-group-item"><b>Sky conditions:</b> <span data-bind="text: skyCondition"></span></li>
+                    <li class="list-group-item"><b>Temperature:</b> <span data-bind="text: temperature"></span></li>
+                    <li class="list-group-item"><b>Dew Poing:</b> <span data-bind="text: dewpoint"></span></li>
+                    <li class="list-group-item"><b>Relative Humidity:</b> <span data-bind="text: humidity"></span></li>
+                    <li class="list-group-item"><b>Pressure:</b> <span data-bind="text: pressure"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-bind="visible: showLoading">
+        <img src="~/Content/Loading.png">
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+            var viewModel = new searchViewModel();
+            ko.applyBindings(viewModel, $("#weatherSearchContainer")[0]);
+        });
+    </script>
+}
