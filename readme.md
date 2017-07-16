@@ -1,5 +1,5 @@
 
-## This project is using aspnet mvc as backend & react,webpack as frontend
+## This project is using aspnet mvc as backend & react, webpack v3 as frontend
 
 **Commands to run/start project**
 > 
