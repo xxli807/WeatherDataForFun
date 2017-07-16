@@ -13,22 +13,23 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: helpers.root('client'),
         enforce: "pre",
-        loader: 'eslint-loader'
+        use: {
+          loader: 'eslint-loader'
+        }
       },
       {
         test: /\.s?(c|a)ss$/,
         include: helpers.root('client', 'app'),
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass'
-        )
+        use: {
+          loader: 'style-loader'
+        }
       },
       {
         test: /\.(js|jsx)$/,
         include: helpers.root('client', 'app'),
-        loaders: [
-          'babel-loader'
-        ]
+        use: {
+          loader: 'babel-loader'
+        }
       }
     ]
   },
