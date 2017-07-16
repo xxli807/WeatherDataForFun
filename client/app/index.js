@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from 'app/Root';
+import Root from './settings/Root';
 
 window.onload = () => {
   ReactDOM.render((

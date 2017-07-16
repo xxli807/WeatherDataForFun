@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var helpers = require('./helpers');
+var helpers = require('./pathHelpers');
 
 module.exports = {
   entry: {
@@ -36,7 +36,7 @@ module.exports = {
   resolve: {
     alias: {
       app: helpers.root('client', 'app'), 
-      share: helpers.root('client','app','components'),
+      components: helpers.root('client','app','components'),
       utils: helpers.root('client', 'app', 'utils')
     },
   },

@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var commonConfig = require('./webpack.common');
-var helpers = require('./helpers');
+var helpers = require('./pathHelpers');
 
 module.exports = webpackMerge.smart(commonConfig, {
   output: {

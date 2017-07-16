@@ -3,12 +3,12 @@ var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var saveHashes = require('assets-webpack-plugin');
 var commonConfig = require('./webpack.common');
-var helpers = require('./helpers');
+var helpers = require('./pathHelpers');
 
 module.exports = webpackMerge.smart(commonConfig, {
   output: {
     publicPath: '/',
-    path: helpers.root('Weather', 'Views', 'home'),
+    path: './Weather/Dist',
     filename: '[name]-[hash].js'
   },
   module: {
@@ -33,6 +33,6 @@ module.exports = webpackMerge.smart(commonConfig, {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new saveHashes({ path: helpers.root('Weather', 'Views', 'home') })
+    new saveHashes({ path: './Weather/Dist' })
   ]
 });

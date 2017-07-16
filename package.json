@@ -1,13 +1,14 @@
 {
-  "name": "weather data for fun",
+  "name": "WeatherDataForFun",
   "version": "0.0.1",
   "description": "weather data for fun frontend",
   "author": "xinxin.li",
   "scripts": {
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
-    "build": "rimraf ./Weather/Views/Home && set NODE_ENV=production & webpack --progress --colors --config config/webpack.prod.js"
+    "build": "rimraf ./Weather/Dist && set NODE_ENV=production & webpack --progress --colors --config ./config/webpack.prod.js"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^3.5.1",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
@@ -16,8 +17,8 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.9.2",
-    "es6-shim": "^0.35.3",
     "css-loader": "^0.23.1",
+    "es6-shim": "^0.35.3",
     "eslint": "^2.4.0",
     "eslint-config-airbnb": "^6.1.0",
     "eslint-loader": "^1.3.0",

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 const Layout = ({ children }) => (
   <div>
-    <div className={classnames('container-fluid')} style={contentFluidStyle}>
+    <div className={classnames('container-fluid')}>
       {children}
     </div>
   </div>

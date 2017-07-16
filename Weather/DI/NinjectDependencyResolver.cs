@@ -1,11 +1,11 @@
 ﻿using Ninject;
 using System;
 using System.Collections.Generic;
-
+using System.Web.Mvc;
 
 namespace Weather.DI
 {
-    public class NinjectDependencyResolver : System.Web.Mvc.IDependencyResolver
+    public class NinjectDependencyResolver : IDependencyResolver
     {
         private readonly IKernel kernel;
 
@@ -26,7 +26,6 @@ namespace Weather.DI
         }
 
         public void Dispose() {
-
         }
     }
 }
