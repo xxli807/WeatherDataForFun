@@ -1,6 +1,8 @@
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getCountry, getCityByCountry } from '.././actions/cityCountryAction';
 
 class CountryCity extends Component {
 
@@ -9,6 +11,8 @@ class CountryCity extends Component {
   }
 
   render() {
+    const defaultC = this.props.defaultCountry;
+    console.log(`${defaultC}`);
     return (
         <div className="weatherSearchContainer">
             <div className="row searchToolbar">
@@ -46,4 +50,22 @@ class CountryCity extends Component {
     );
   }
 }
-export default connect(null, null)(CountryCity);
+
+CountryCity.propTypes = {
+  defaultCountry: PropTypes.string,
+  getCountry: PropTypes.func,
+  getCityByCountry: PropTypes.func
+};
+
+function mapStateToProps(state) {
+  return {
+    defaultCountry: state.cityCountry.defaultCountry
+  };
+}
+
+
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ getCountry, getCityByCountry }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(CountryCity);

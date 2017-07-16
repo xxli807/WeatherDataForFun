@@ -1,0 +1,3 @@
+
+export const GET_COUNTRY = 'GET_COUNTRY';
+export const GET_CITY_BY_COUNTRY = 'GET_CITY_BY_COUNTRY';
