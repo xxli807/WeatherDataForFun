@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         test: /\.s?(c|a)ss$/,
-        include: helpers.root('client'),
+        include: helpers.root('client', 'app'),
         loader: ExtractTextPlugin.extract(
           'style-loader',
           'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass'
@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        include: helpers.root('client'),
+        include: helpers.root('client', 'app'),
         loaders: [
           'babel-loader'
         ]

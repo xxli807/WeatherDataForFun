@@ -9,7 +9,7 @@ module.exports = webpackMerge.smart(commonConfig, {
   output: {
     publicPath: '/',
     path: './Weather/Dist',
-    filename: '[name]-[hash].js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -26,7 +26,7 @@ module.exports = webpackMerge.smart(commonConfig, {
     extensions: ['', '.js']
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor-[hash].js' } ),
+    new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor.js' } ),
     new ExtractTextPlugin('app-[hash].css'),
     new webpack.DefinePlugin({
       'process.env': {

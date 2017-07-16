@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router';
-import Layout from 'components/Layout';
+import CountryCity from 'components/CountryCity';
 
 export default (
-  <Route path="/" component={Layout}>
-    { /* <Route path="/login" component={Login} /> */ }
+  <Route path="/" component={CountryCity}>
+     { /* <Route path="/sth" component={sth} /> */ }
   </Route>
 );

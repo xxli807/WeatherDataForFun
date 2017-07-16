@@ -14,7 +14,7 @@ module.exports = webpackMerge.smart(commonConfig, {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        include: helpers.root('client'),
+        include: helpers.root('client', 'app'),
         loaders: [
           'babel-loader'
         ]
@@ -23,12 +23,12 @@ module.exports = webpackMerge.smart(commonConfig, {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor.bundle.js' } ),
+    new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor.js' } ),
     new ExtractTextPlugin('app.css')
   ],
 
   devServer: {
-    contentBase: helpers.root('client'),
+    contentBase: helpers.root('client', 'app'),
     hot: true,
     proxy: {
 
