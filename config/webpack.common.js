@@ -20,9 +20,7 @@ module.exports = {
       {
         test: /\.s?(c|a)ss$/,
         include: helpers.root('client', 'app'),
-        use: {
-          loader: 'style-loader'
-        }
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader']}) 
       },
       {
         test: /\.(js|jsx)$/,
