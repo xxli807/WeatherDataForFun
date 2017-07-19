@@ -18,9 +18,19 @@ module.exports = {
         }
       },
       {
-        test: /\.s?(c|a)ss$/,
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ['css-loader']
+        })
+      },
+      {
+        test: /\.scss$/,
         include: helpers.root('client', 'app'),
-        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader']}) 
+        use: ExtractTextPlugin.extract({ 
+          fallback: 'style-loader', 
+          use: ['css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]', 'sass-loader']
+        }) 
       },
       {
         test: /\.(js|jsx)$/,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { getCountry, getCityByCountry } from '.././actions/cityCountryAction';
-import ccscss from './CountryCity.scss';
+import ccStyle from './CountryCity.scss';
 
 class CountryCity extends Component {
 
@@ -12,10 +12,10 @@ class CountryCity extends Component {
   }
 
   render() {
-    const defaultC = this.props.defaultCountry;
+    // const defaultC = this.props.defaultCountry;
     return (
-        <div className={classnames(ccscss.weatherSearchContainer, 'container')}>
-            <div className="row searchToolbar">
+        <div className={classnames(ccStyle.weatherSearchContainer, 'container')}>
+            <div className={classnames(ccStyle.searchToolbar, 'row')}>
                 <div className="col-md-4">
                     <input type="text" placeholder="Country Name" className="countryName" />
                 </div>

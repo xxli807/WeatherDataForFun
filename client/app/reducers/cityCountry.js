@@ -2,7 +2,8 @@
 import { handleActions } from 'redux-actions';
 
 const defaultState = {
-  defaultCountry: 'Australia'
+  defaultCountry: 'Australia',
+  defaultCity: 'Sydney'
 };
 
 const cityCountryReducer = handleActions({

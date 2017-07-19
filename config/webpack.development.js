@@ -24,7 +24,7 @@ module.exports = webpackMerge.smart(commonConfig, {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor.js' } ),
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('[name].css')
   ],
 
   devServer: {
