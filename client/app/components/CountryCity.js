@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { getCountry, getCityByCountry } from '.././actions/cityCountryAction';
-import ccStyle from './CountryCity.scss';
+import ccStyle from './countryCity.scss';
 
 class CountryCity extends Component {
+
+  // componentDidMount() {
+
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
