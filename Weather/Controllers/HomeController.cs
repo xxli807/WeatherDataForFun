@@ -25,6 +25,7 @@ namespace Weather.Controllers
         }
 
         [HttpGet]
+        [Route("getCitiesByCountry/{countryName}")]
         public async Task<JsonResult> GetCitiesByCountry(string countryName)
         {
             var countryCities = await _weatherService.GetCitiesByCountryName(countryName);
@@ -38,7 +39,8 @@ namespace Weather.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetWeatherByCity(string cityName, string countryName)
+        [Route("getWeatherByCity/{countryName}/{cityName}")]
+        public async Task<JsonResult> GetWeatherByCity(string countryName, string cityName)
         {
 
             var cityWeather = await _weatherService.GetWatherByCityCountryName(cityName, countryName);

@@ -29,7 +29,7 @@ class CountryCity extends Component {
       country: this.state.country,
       city: e.target.value
     };
-    this.getCityWeather(payload);
+    this.props.getCityWeather(payload);
   }
 
   handleSubmit(e) {
@@ -42,15 +42,15 @@ class CountryCity extends Component {
     }
     return (
       <ul className="list-group" data-bind="with: WeatherDetail">
-        <li className="list-group-item"><b>Location: {weather.Location}</b> </li>
-        <li className="list-group-item"><b>Time:</b> {weather.Time}</li>
-        <li className="list-group-item"><b>Wind:</b> {weather.Wind}</li>
-        <li className="list-group-item"><b>Visibility:</b> {weather.Visibility}</li>
-        <li className="list-group-item"><b>Sky conditions:</b> {weather.SkyConditions}</li>
-        <li className="list-group-item"><b>Temperature:</b> {weather.Temperature} </li>
-        <li className="list-group-item"><b>Dew Poing:</b> {weather.DewPoing} </li>
-        <li className="list-group-item"><b>Relative Humidity:</b> {weather.Humidity} </li>
-        <li className="list-group-item"><b>Pressure:</b> {weather.Pressure} </li>
+        <li className="list-group-item"><b>Location: {weather.location}</b> </li>
+        <li className="list-group-item"><b>Time:</b> {weather.time}</li>
+        <li className="list-group-item"><b>Wind:</b> {weather.wind}</li>
+        <li className="list-group-item"><b>Visibility:</b> {weather.visibility}</li>
+        <li className="list-group-item"><b>Sky conditions:</b> {weather.skyConditions}</li>
+        <li className="list-group-item"><b>Temperature:</b> {weather.temperature} </li>
+        <li className="list-group-item"><b>Dew Poing:</b> {weather.dewPoing} </li>
+        <li className="list-group-item"><b>Relative Humidity:</b> {weather.humidity} </li>
+        <li className="list-group-item"><b>Pressure:</b> {weather.pressure} </li>
       </ul>
     );
   }
@@ -62,12 +62,12 @@ class CountryCity extends Component {
         <div className={classnames(ccStyle.weatherSearchContainer, 'container')}>
             <div className={classnames(ccStyle.searchToolbar, 'row')}>
                 <div className="col-md-4">
-                    <input type="text" placeholder="Country Name" className="countryName" onChange= {(e) => this.getCityByCountry(e)} />
+                    <input type="text" placeholder="Country Name" className="countryName" onBlur= {(e) => this.getCityByCountry(e)} />
                 </div>
                 <div className="col-md-6">
                     <select className="cityName" onChange={(e) => this.handleCityChange(e)} value={this.state.selectedCity} >
                       {cities.map(d => {
-                        return <options key={d}>{d}</options>;
+                        return <option key={d}>{d}</option>;
                       })}
                     </select>
                 </div>

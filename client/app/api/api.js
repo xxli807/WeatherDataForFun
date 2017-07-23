@@ -1,10 +1,9 @@
 import request from '../utils/request';
 
 export const getCityWeather = (payload) => {
-  return request.post('api/home/GetCitiesByCountry', payload);
+  return request.get(`api/getWeatherByCity/${payload.country}/${payload.city}`);
 };
 
 export const getCitiesByCountry = (payload) => {
-  debugger;
-  return request.post('api/home/GetCitiesByCountry', payload);
+  return request.get(`api/getCitiesByCountry/${payload.country}`);
 };

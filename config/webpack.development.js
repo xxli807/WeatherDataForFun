@@ -31,13 +31,13 @@ module.exports = webpackMerge.smart(commonConfig, {
     contentBase: helpers.root('client', 'app'),
     hot: true,
     proxy: {
-      '/api/*': {
+      '/api/**': {
         target: 'http://localhost:5000/',
-        secure: false
+        changeOrigin: true
       },
-      '/images/*': {
+      '/images/**': {
         target: 'http://localhost:5000/',
-        secure: false
+        changeOrigin: true
       }
     }
   }

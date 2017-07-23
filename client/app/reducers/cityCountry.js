@@ -4,7 +4,7 @@ import { handleActions } from 'redux-actions';
 const defaultState = {
   defaultCountry: '',
   cities: [],
-  Weather: {}
+  weather: {}
 };
 
 const cityCountryReducer = handleActions({
@@ -16,7 +16,7 @@ const cityCountryReducer = handleActions({
 //    return object.Assign({}, ...state, {cities: action.payload.cities} );
 //   },
   GET_WEATHER_BY_CITY_SUCCESS: (state, action) => ({
-    ...state, Weather: action.Weather
+    ...state, weather: action.payload.cityWeather
   })
 }, defaultState);
 
