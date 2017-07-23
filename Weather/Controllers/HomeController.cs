@@ -8,6 +8,7 @@ using Weather.Services;
 
 namespace Weather.Controllers
 {
+    [RoutePrefix("api")]
     public class HomeController : Controller
     {
         private readonly ICityWeatherService _weatherService;
@@ -17,7 +18,7 @@ namespace Weather.Controllers
             _weatherService = weatherService;
         }
 
-
+        [Route]
         public ActionResult Index()
         {
             return View();

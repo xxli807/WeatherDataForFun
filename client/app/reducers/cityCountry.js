@@ -2,17 +2,21 @@
 import { handleActions } from 'redux-actions';
 
 const defaultState = {
-  defaultCountry: 'Australia',
-  defaultCity: 'Sydney'
+  defaultCountry: '',
+  cities: [],
+  Weather: {}
 };
 
 const cityCountryReducer = handleActions({
-  GET_COUNTRY: (state) => ({
-    ...state
+  GET_CITY_BY_COUNTRY_SUCCESS: (state, action) => ({
+    ...state, cities: action.payload.cities
   }),
-
-  GET_CITY_BY_COUNTRY: (state) => ({
-    ...state
+//  GET_CITY_BY_COUNTRY: (state, action) => {
+//    debugger;
+//    return object.Assign({}, ...state, {cities: action.payload.cities} );
+//   },
+  GET_WEATHER_BY_CITY_SUCCESS: (state, action) => ({
+    ...state, Weather: action.Weather
   })
 }, defaultState);
 

@@ -2,29 +2,74 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { bindActionCreators } from 'redux';
-import { getCountry, getCityByCountry } from '.././actions/cityCountryAction';
+import { getCityWeather, getCityByCountry } from '.././actions/cityCountryAction';
 import ccStyle from './countryCity.scss';
 
 class CountryCity extends Component {
 
-  // componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      country: '',
+      selectedCity: ''
+    };
+  }
 
-  // }
+  getCityByCountry(e) {
+    this.setState({ country: e.target.value });
+    const payload = {
+      country: e.target.value
+    };
+    this.props.getCityByCountry(payload);
+  }
+
+  handleCityChange(e) {
+    this.setState({ selectedCity: e.target.value });
+    const payload = {
+      country: this.state.country,
+      city: e.target.value
+    };
+    this.getCityWeather(payload);
+  }
 
   handleSubmit(e) {
     e.preventDefault();
   }
 
+  renderWeather(weather) {
+    if (!weather) {
+      return null;
+    }
+    return (
+      <ul className="list-group" data-bind="with: WeatherDetail">
+        <li className="list-group-item"><b>Location: {weather.Location}</b> </li>
+        <li className="list-group-item"><b>Time:</b> {weather.Time}</li>
+        <li className="list-group-item"><b>Wind:</b> {weather.Wind}</li>
+        <li className="list-group-item"><b>Visibility:</b> {weather.Visibility}</li>
+        <li className="list-group-item"><b>Sky conditions:</b> {weather.SkyConditions}</li>
+        <li className="list-group-item"><b>Temperature:</b> {weather.Temperature} </li>
+        <li className="list-group-item"><b>Dew Poing:</b> {weather.DewPoing} </li>
+        <li className="list-group-item"><b>Relative Humidity:</b> {weather.Humidity} </li>
+        <li className="list-group-item"><b>Pressure:</b> {weather.Pressure} </li>
+      </ul>
+    );
+  }
+
   render() {
-    // const defaultC = this.props.defaultCountry;
+    const cities = this.props.cities;
+    const weather = this.props.weather;
     return (
         <div className={classnames(ccStyle.weatherSearchContainer, 'container')}>
             <div className={classnames(ccStyle.searchToolbar, 'row')}>
                 <div className="col-md-4">
-                    <input type="text" placeholder="Country Name" className="countryName" />
+                    <input type="text" placeholder="Country Name" className="countryName" onChange= {(e) => this.getCityByCountry(e)} />
                 </div>
                 <div className="col-md-6">
-                    <select className="cityName"></select>
+                    <select className="cityName" onChange={(e) => this.handleCityChange(e)} value={this.state.selectedCity} >
+                      {cities.map(d => {
+                        return <options key={d}>{d}</options>;
+                      })}
+                    </select>
                 </div>
                 <div className="col-md-2">
                     <span className="errorMessage"></span>
@@ -35,18 +80,7 @@ class CountryCity extends Component {
                 <div className="col-md-12">
                     <div className="panel panel-default">
                         <div className="panel-heading">Weather Detail</div>
-
-                        <ul className="list-group" data-bind="with: WeatherDetail">
-                            <li className="list-group-item"><b>Location:</b> </li>
-                            <li className="list-group-item"><b>Time:</b> </li>
-                            <li className="list-group-item"><b>Wind: </b></li>
-                            <li className="list-group-item"><b>Visibility:</b> </li>
-                            <li className="list-group-item"><b>Sky conditions:</b> </li>
-                            <li className="list-group-item"><b>Temperature:</b> </li>
-                            <li className="list-group-item"><b>Dew Poing:</b> </li>
-                            <li className="list-group-item"><b>Relative Humidity:</b> </li>
-                            <li className="list-group-item"><b>Pressure:</b> </li>
-                        </ul>
+                        {this.renderWeather(weather)}
                     </div>
                 </div>
             </div>
@@ -56,20 +90,22 @@ class CountryCity extends Component {
 }
 
 CountryCity.propTypes = {
-  defaultCountry: PropTypes.string,
-  getCountry: PropTypes.func,
-  getCityByCountry: PropTypes.func
+  cities: PropTypes.array,
+  weather: PropTypes.object,
+  getCityByCountry: PropTypes.func,
+  getCityWeather: PropTypes.func
 };
 
 function mapStateToProps(state) {
   return {
-    defaultCountry: state.cityCountry.defaultCountry
+    cities: state.cityCountry.cities,
+    weather: state.cityCountry.weather
   };
 }
 
 
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ getCountry, getCityByCountry }, dispatch);
+  return bindActionCreators({ getCityWeather, getCityByCountry }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CountryCity);
