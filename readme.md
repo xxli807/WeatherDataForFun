@@ -21,3 +21,7 @@
   * aspnet core 1.1
   * vs 2017
 
+**issues**
+> 
+  uncaught ReferenceError: webpackJsonp is not defined
+  vendor.js should be in front of app.js in build model

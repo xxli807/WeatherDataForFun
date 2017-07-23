@@ -8,31 +8,20 @@ var helpers = require('./pathHelpers');
 module.exports = webpackMerge.smart(commonConfig, {
   output: {
     publicPath: '/',
-    path: './Weather/Dist',
-    filename: '[name].js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.styl$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css?sourceMap&modules&importLoaders=1&localIdentName=[hash:base64:5]!stylus'
-        )
-      }
-    ]
+    path: helpers.root('Weather', 'Dist'),
+    filename: '[name].js' // should using [name]-[hash].js to avoid all js cache
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['.jsx', '.js']
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin( { name: 'vendor', filename: 'vendor.js' } ),
-    new ExtractTextPlugin('app-[hash].css'),
+    new ExtractTextPlugin('app.css'), // should using [app]-[hash].css to avoid all css caches
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new saveHashes({ path: './Weather/Dist' })
+    new saveHashes({ path: helpers.root('Weather', 'Dist') })
   ]
 });

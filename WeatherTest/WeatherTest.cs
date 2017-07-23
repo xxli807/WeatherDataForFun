@@ -29,7 +29,7 @@ namespace WeatherTest
             var mockSerive = new Mock<ICityWeatherService>();
             mockSerive.Setup(d => d.GetCitiesByCountryName("B")).Returns(Task.FromResult(tables));
 
-            var homeController = new HomeController(mockSerive.Object);
+            var homeController = new CityWeatherController(mockSerive.Object);
             var jsonResult = await homeController.GetCitiesByCountry("B");
               
             Assert.IsNotNull(jsonResult.Data); 

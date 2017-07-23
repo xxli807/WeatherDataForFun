@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CityWeatherController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DI\DIConfig.cs" />
     <Compile Include="DI\NinjectDependencyResolver.cs" />
@@ -148,12 +149,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Loading.png" />
+    <Content Include="Dist\app.css" />
+    <Content Include="Dist\app.js" />
+    <Content Include="Dist\vendor.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Dist\webpack-assets.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Home\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -186,10 +191,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Service References\ExternalServices\globalweather.wsdl" />
+    <Content Include="Views\Home\Index_knockout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Dist\" />
     <Folder Include="Domains\" />
     <Folder Include="Models\" />
   </ItemGroup>
