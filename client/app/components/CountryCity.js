@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { getCityWeather, getCityByCountry } from '.././actions/cityCountryAction';
 import ccStyle from './countryCity.scss';
 
-class CountryCity extends Component {
+export class CountryCity extends Component {
 
   constructor(props) {
     super(props);

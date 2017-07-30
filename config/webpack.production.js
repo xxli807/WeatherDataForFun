@@ -21,7 +21,7 @@ module.exports = webpackMerge.smart(commonConfig, {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
-    }),
-    new saveHashes({ path: helpers.root('Weather', 'Dist') })
+    })
+    // new saveHashes({ path: helpers.root('Weather', 'Dist') })
   ]
 });
