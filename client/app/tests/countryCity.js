@@ -5,6 +5,8 @@ import { CountryCity } from '../components/countryCity';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
+
+// http://redux.js.org/docs/recipes/WritingTests.html how to test the redux 
 test('<CountryCity />', () => {
 
   // const component = mount(

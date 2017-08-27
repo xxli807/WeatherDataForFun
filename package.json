@@ -71,7 +71,9 @@
       "js"
     ],
     "modulePathIgnorePatterns": [],
-    "testPathIgnorePatterns":["__snapshots__"],
+    "testPathIgnorePatterns": [
+      "__snapshots__"
+    ],
     "testRegex": "/tests/.*.(jsx|js)$",
     "verbose": true,
     "collectCoverage": true,
@@ -80,7 +82,7 @@
       "react-dom",
       "react-css-modules"
     ],
-     "moduleNameMapper": {
+    "moduleNameMapper": {
       "^.+\\.(css|scss)$": "<rootDir>/client/app/jest/styleMock.js"
     }
   }
